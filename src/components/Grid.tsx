@@ -21,9 +21,11 @@ export const Grid: FC = () => {
 
   return (
     <StyledGrid>
-      {map.map((grid, index) => {
-        return <GridItem grid={grid} key={index} />;
-      })}
+      {map.map((grids: GridType[]) =>
+        grids.map((grid: GridType, index: number) => (
+          <GridItem grid={grid} key={index} />
+        ))
+      )}
     </StyledGrid>
   );
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import { getMap } from "../utils/getMap";
 
 export const X = 10;
 export const Y = 10;
@@ -17,7 +16,7 @@ export interface Grid extends Location {
 }
 
 interface MapContext {
-  map: Grid[];
+  map: Grid[][];
   powerStorage: Location;
 }
 
