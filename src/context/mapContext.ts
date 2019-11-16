@@ -18,6 +18,7 @@ export interface Grid extends Location {
 interface MapContext {
   map: Grid[][];
   powerStorage: Location;
+  updateMap?: (grid: Grid) => void;
 }
 
 export const MapContext = React.createContext<MapContext>({
