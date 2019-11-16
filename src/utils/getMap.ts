@@ -1,11 +1,4 @@
-interface Grid {
-  x: number;
-  y: number;
-  canPlace: boolean;
-  hasTurbine: boolean;
-  placingCost: number;
-  generatedPower: number;
-}
+import { Grid } from "../context/mapContext";
 
 export function getMap(xAxis: number, yAxis: number): Grid[] {
   const map: Grid[] = [];
@@ -14,7 +7,7 @@ export function getMap(xAxis: number, yAxis: number): Grid[] {
       let grid = {
         x,
         y,
-        canPlace: Boolean(Math.random() > 0.2),
+        canPlace: Boolean(Math.random() > 0.1),
         hasTurbine: false,
         placingCost: 200 + Math.floor(Math.random() * 100),
         generatedPower: 0
