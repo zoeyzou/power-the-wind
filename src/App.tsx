@@ -8,12 +8,19 @@ import {
   Grid as GridType,
   MapContextProvider,
   X,
-  Y
+  Y,
+  BUDGET
 } from "./context/mapContext";
-import { Grid } from "./components/Grid";
+import { Board } from "./components/Board";
+import { getGameScore, getRemainingBudget } from "./utils/calc";
 
 const App: React.FC = () => {
-  const [map, setMap] = useState(getMap(X, Y));
+  const powerStore = {
+    x: Math.floor(X / 2),
+    y: Math.floor(Y / 2)
+  };
+
+  const [map, setMap] = useState(getMap(X, Y, powerStore));
 
   return (
     <MapContextProvider
@@ -23,16 +30,18 @@ const App: React.FC = () => {
           x: Math.floor(X / 2),
           y: Math.floor(Y / 2)
         },
-        updateMap: grid => {
+        updateMap: (grid: GridType) => {
           const newMapString = JSON.stringify(map);
           const newMap: GridType[][] = JSON.parse(newMapString);
           newMap[grid.y][grid.x] = grid;
           setMap(newMap);
-        }
+        },
+        gameBudget: getRemainingBudget(BUDGET, map),
+        gameScore: getGameScore(map)
       }}
     >
       <DndProvider backend={HTML5Backend}>
-        <Grid />
+        <Board />
       </DndProvider>
     </MapContextProvider>
   );

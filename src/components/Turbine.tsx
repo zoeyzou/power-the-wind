@@ -5,11 +5,11 @@ import styled from "styled-components";
 import turbine from "../assets/turbine.svg";
 import ItemTypes from "../types/item-types";
 
-const TurbineWrapper = styled.div<{ isDragging?: boolean }>`
+export const TurbineWrapper = styled.div<{ isDragging?: boolean }>`
   width: 100%;
   height: 100%;
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 80px;
+  max-height: 80px;
 
   img {
     object-fit: contain;

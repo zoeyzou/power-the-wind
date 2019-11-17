@@ -3,26 +3,35 @@ import styled from "styled-components";
 import { useDrop } from "react-dnd";
 
 import { Grid as GridType, MapContext, X, Y } from "../context/mapContext";
-import { Turbine } from "./Turbine";
+import { Turbine, TurbineWrapper } from "./Turbine";
 import ItemTypes from "../types/item-types";
-
-const Wrapper = styled.div`
-  display: flex;
-`;
+import { getTurbinePower } from "../utils/calc";
 
 const StyledGrid = styled.main`
+  flex: 2;
   display: grid;
-  grid-template-columns: repeat(${X}, 80px);
-  grid-template-rows: repeat(${Y}, 80px);
+  grid-template-columns: repeat(${X}, 120px);
+  grid-template-rows: repeat(${Y}, 120px);
+  gap: 1px;
+`;
+
+const CostAndEnergy = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const StyledGridItem = styled.div<{ grid: GridType }>`
   position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.2);
   font-size: 10px;
-  background-color: ${props => (props.grid.canPlace ? "white" : "lightblue")};
+  background-color: ${props =>
+    props.grid.hasPowerStore
+      ? "beige"
+      : props.grid.canPlace
+      ? "#D8E6E7"
+      : "#6E7783"};
+  border-width: 1px;
 
-  > :last-child {
+  ${TurbineWrapper} {
     position: absolute;
     right: 0;
     bottom: 5px;
@@ -33,31 +42,34 @@ export const Grid: FC = () => {
   const { map, updateMap } = useContext(MapContext);
 
   return (
-    <Wrapper>
-      <StyledGrid>
-        {map.map((grids: GridType[]) =>
-          grids.map((grid: GridType, index: number) => (
-            <GridItem grid={grid} updateMap={updateMap} key={index}>
-              {grid.hasTurbine && <Turbine />}
-            </GridItem>
-          ))
-        )}
-      </StyledGrid>
-      <Turbine />
-    </Wrapper>
+    <StyledGrid>
+      {map.map((grids: GridType[]) =>
+        grids.map((grid: GridType, index: number) => (
+          <GridItem grid={grid} updateMap={updateMap} key={index}>
+            {grid.hasTurbine && <Turbine />}
+            {grid.hasPowerStore && "POWER STORE"}
+          </GridItem>
+        ))
+      )}
+    </StyledGrid>
   );
 };
 
-export const GridItem: FC<{
+const GridItem: FC<{
   grid: GridType;
   updateMap?: (grid: GridType) => void;
 }> = ({ grid, updateMap, children }) => {
   const [{ isOver, canDrop, hasDrop }, drop] = useDrop({
     accept: (grid.canPlace && ItemTypes.TURBINE) || "test",
-    canDrop: () => grid.canPlace && !grid.hasTurbine,
+    canDrop: () => !!grid.canPlace && !grid.hasTurbine,
 
     drop: () => {
-      updateMap && updateMap({ ...grid, hasTurbine: true });
+      updateMap &&
+        updateMap({
+          ...grid,
+          hasTurbine: true,
+          generatedPower: getTurbinePower(grid)
+        });
     },
     collect: monitor => ({
       isOver: !!monitor.isOver(),
@@ -70,9 +82,14 @@ export const GridItem: FC<{
     <StyledGridItem
       grid={grid}
       ref={drop}
-      style={{ borderColor: canDrop ? "pink" : "rgba(0, 0, 0, 0.2)" }}
+      style={{ borderColor: canDrop ? "#9DC3C1" : "" }}
     >
-      {grid.canPlace && "Cost: " + grid.placingCost}
+      <CostAndEnergy>
+        {grid.canPlace && grid.placingCost && (
+          <div>Cost: {grid.placingCost}</div>
+        )}
+        {grid.generatedPower !== 0 && <div>Power: {grid.generatedPower}</div>}
+      </CostAndEnergy>
       {children}
     </StyledGridItem>
   );
