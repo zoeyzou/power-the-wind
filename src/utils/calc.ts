@@ -1,4 +1,4 @@
-import { Grid } from "../context/mapContext";
+import { Grid, TURBINE_COST } from "../context/mapContext";
 
 export function getTurbinePower(grid: Grid) {
   return 1000;
@@ -15,7 +15,7 @@ export function getGameScore(gameGrid: Grid[][]) {
 export function getRemainingBudget(total: number, gameGrid: Grid[][]) {
   const used = gameGrid.reduce((accum, current) => {
     const costs = current.map(item =>
-      item.hasTurbine && item.placingCost ? item.placingCost : 0
+      item.hasTurbine && item.placingCost ? item.placingCost + TURBINE_COST : 0
     );
     const total = costs.reduce((acc, curr) => acc + curr, 0);
     return accum + total;
