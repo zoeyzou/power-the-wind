@@ -82,7 +82,7 @@ export const Board = () => {
           <Turbine />
           <p>👆Drag the turbine into the game</p>
         </TurbineWrapper>
-        <SubmitButton>Submit</SubmitButton>
+        {/* <SubmitButton>Submit</SubmitButton> */}
       </SideMenu>
     </Wrapper>
   );
