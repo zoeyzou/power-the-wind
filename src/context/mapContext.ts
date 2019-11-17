@@ -3,6 +3,7 @@ import React from "react";
 export const X = 6;
 export const Y = 6;
 export const BUDGET = 5000;
+export const TURBINE_COST = 1000;
 
 export interface Location {
   x: number;
