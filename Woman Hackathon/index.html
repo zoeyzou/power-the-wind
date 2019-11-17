@@ -1,13 +1,84 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="utf-8"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   </head>
-  <body>
-    <img class="logo" src="https://orstedcdn.azureedge.net/-/media/WWW/Images/Corp/Graphics/Logos/Orsted-logo/OrstedLogoPNG.ashx?mh=1440&mw=1440&rev=1e368a23dd1a4420a4109229a082da76&hash=10B0291B02EA839A39291058A409417E" alt="logo">
-    <h1>Power the wind<img class="game-logo bigger" src="game.png" alt="game-logo"></h1>
-    <a href="main.html"><img class="start-image"src="go logo.png" alt="start-image"></a>
+  <body id="body">
+      <header> 
+          <div>
+            <a href="main.html"><img class="sub-logo" src="https://orstedcdn.azureedge.net/-/media/WWW/Images/Corp/Graphics/Logos/Orsted-logo/OrstedLogoPNG.ashx?mh=1440&mw=1440&rev=1e368a23dd1a4420a4109229a082da76&hash=10B0291B02EA839A39291058A409417E" alt="logo-image"></a>
+            <h2>Power the wind<img class="game-logo" src="game.png" alt="game-logo"></h2>
+          </div>  
+          <nav id="header-nav">
+              <a  style="left: 650px" href="localLeaderboard.html"><strong>LEADERBOARDS</strong></a>
+          </nav>
+        </header> 
+        <main id="main2">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    
+      
+        
+      </main>
+      <input id="submit" style="padding: 10px 50px; margin: 30px 10px " type="submit">
+      <div class="popup">
+        <form>
+          <h2 class="centered">Congratulations !!!</h2>
+          <p class="centered emphasize">Your Score: <br><span id="score">900</span> points</p>
+          <p>Your score can power<span class="houseNumber"></span> houses for a year</p>
+          Enter your name: <br>
+          <input class="memberName" type="text" placeholder="Enter your name" required> <br><br>
+          Enter your class: (Optional) <br>
+          <input class="className" type="text" placeholder="Enter your class name">
+          
+          <div class="fun-fact">
+            <img src="bulb.svg" alt="think-image">
+            <div class="foot-note"> 
+              <p>Wind power is renewable and there is no way we can run out of it.</p>
+              <p>Did You Know a single wind turbine can power ~ 500 homes?</p>
+            </div>
+          </div>
+          <div class="buttons">
+            <button class="save" type="button">Save</button>
+            <button class="cancel" type="button">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <script src="game.js"></script>
   </body>
 </html>

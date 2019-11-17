@@ -145,10 +145,22 @@ header h2 {
   width: 100px;
   margin: 12px auto;
 }
+#body {
+  margin: auto;
+}
 
 #main {
   display: flex;
   width: 800px;
+  margin: auto;
+  border: 1px solid lightblue;
+  box-shadow: -1px 1px 13px 0px #888888;
+  padding: 15px;
+  border-radius: 5px;
+}
+#main2 {
+  display: flex;
+  width: 1000px;
   margin: auto;
   border: 1px solid lightblue;
   box-shadow: -1px 1px 13px 0px #888888;
@@ -165,8 +177,6 @@ header h2 {
   display: block;
   border-radius: 3px;
 }
-
-
 
 /*leaderboard.html*/
 #nav-leaderboard {

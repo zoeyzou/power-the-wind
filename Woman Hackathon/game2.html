@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header> 
+      <div>
+        <a href="main.html"><img class="sub-logo" src="https://orstedcdn.azureedge.net/-/media/WWW/Images/Corp/Graphics/Logos/Orsted-logo/OrstedLogoPNG.ashx?mh=1440&mw=1440&rev=1e368a23dd1a4420a4109229a082da76&hash=10B0291B02EA839A39291058A409417E" alt="logo-image"></a>
+        <h2>Power the wind<img class="game-logo" src="game.png" alt="game-logo"></h2>
+      </div>  
+      <nav id="header-nav">
+          <a href="localLeaderboard.html"><strong>LEADERBOARDS</strong></a>
+      </nav>
+    </header> 
+    <main id="main">
+      <input id="submit" type="submit">
+    </main>
+    <div class="popup">
+      <form>
+        <h2 class="centered">Congratulations !!!</h2>
+        <p class="centered emphasize">Your Score: <br><span id="score">900</span> points</p>
+        <p>Your score can power<span class="houseNumber"></span> houses for a year</p>
+        Enter your name: <br>
+        <input class="memberName" type="text" placeholder="Enter your name" required> <br><br>
+        Enter your class: (Optional) <br>
+        <input class="className" type="text" placeholder="Enter your class name">
+        
+        <div class="fun-fact">
+          <img src="bulb.svg" alt="think-image">
+          <div class="foot-note"> 
+            <p>Wind power is renewable and there is no way we can run out of it.</p>
+            <p>Did You Know a single wind turbine can power ~ 500 homes?</p>
+          </div>
+        </div>
+        <div class="buttons">
+          <button class="save" type="button">Save</button>
+          <button class="cancel" type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <script src="game.js"></script>
+  </body>
+
+</html>
